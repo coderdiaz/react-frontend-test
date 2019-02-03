@@ -9,6 +9,8 @@
 // Utilities
 @import "./scss/utilities/tailwind";
 @import "./scss/utilities/grid";
-@import "./scss/utilities/badge-icon";
-@import "./scss/utilities/navigation";
-@import "./scss/utilities/search-box";
+
+// Components
+@import "./components/BadgeIcon/style";
+@import "./components/Navigation/style";
+@import "./components/SearchBox/style";

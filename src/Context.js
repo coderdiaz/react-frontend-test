@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 // Creating React's context
 export const AppContext = React.createContext();
 
-class Context extends React.Component {
+class Context extends Component {
   state = {};
 
   render () {

@@ -1,6 +1,6 @@
 import React from 'react';
-import BadgeIcon from './BadgeIcon';
-import SearchBox from './SearchBox';
+import BadgeIcon from '../BadgeIcon';
+import SearchBox from '../SearchBox';
 
 const Navigation = () => {
   return (<nav className="navigation flex items-center justify-between flex-wrap">
