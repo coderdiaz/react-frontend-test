@@ -1,6 +1,13 @@
 // SCSS Importer
 @import "./scss/variables";
+@import "./scss/global";
+
+// Header
+@import "./scss/header/skin";
+@import "./scss/header/skeleton";
 
 // Utilities
 @import "./scss/utilities/tailwind";
 @import "./scss/utilities/grid";
+@import "./scss/utilities/badge-icon";
+@import "./scss/utilities/navigation";

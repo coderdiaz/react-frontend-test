@@ -1,0 +1,14 @@
+// Badge Icon styles
+.badge__icon {
+  position: relative;
+  .badge__counter {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    background: #ef5753;
+    border-radius: 9999px;
+    padding: 2px;
+    font-size: 9px;
+    z-index: 99999;
+  }
+}
