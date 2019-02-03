@@ -12,7 +12,7 @@ const Navigation = () => {
       <div>
         <ul className="list-reset flex items-center navigation__options">
           <li className="mr-4">
-            <SearchBox placeholderText="Search..."></SearchBox>
+            <SearchBox placeholderText="Search..." width={200}></SearchBox>
           </li>
           <li className="mr-4">
             <BadgeIcon count={10} iconName="bell"></BadgeIcon>
