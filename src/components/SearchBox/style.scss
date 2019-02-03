@@ -1,6 +1,20 @@
 // Search Box Component
 .search-box {
+  position: relative;
   .search__input {
     transition: all .1s ease;
+  }
+  .search__dropdown {
+    width: 100%;
+    background: #FFF;
+    position: absolute;
+    min-height: 50px;
+    border: 1px solid #dae1e7;
+    .search__list {
+      .search__item {
+        padding: 10px;
+        border-bottom: 1px solid #dae1e7;
+      }
+    }
   }
 }
