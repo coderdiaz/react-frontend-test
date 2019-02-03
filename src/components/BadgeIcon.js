@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 const BadgeIcon = ({ count = 0, iconName }) => {
   return (<button className="badge__icon">

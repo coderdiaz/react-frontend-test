@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 const SearchBox = ({ placeholderText }) => {
   return (<div className="search-box bg-white flex">
