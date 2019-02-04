@@ -38,7 +38,8 @@ class SearchBox extends Component {
   };
 
   clickOption = (e, option) => {
-    // TODO: Add logic for API call to get Job information
+    this.context.findJob(option);
+    this.context.show(false);
   };
 
   searchList = () => (

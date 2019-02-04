@@ -1,17 +1,14 @@
 import React from 'react';
-import Navigation from './components/Navigation/index.js';
 import Context from './Context';
 import './App.scss';
+import Dashboard from './views/Dashboard';
 
 const App = () => {
   return (<Context>
-    <header className="header bg-blue-darkest">
-      <div className="container mx-auto">
-        <Navigation></Navigation>
-      </div>
-    </header>
-    <main className="main"></main>
+    <Dashboard />
   </Context>);
-}
+};
+
+App.contextType = Context;
 
 export default App;
