@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
+import { AppContext } from '../../Context';
 
 class SearchBox extends Component {
+  static contextType = AppContext;
+
   state = {
     originalWidth: 0,
-    toggle: false,
   };
 
   constructor (props) {
     super(props);
     this.width = props.width;
-    this.toggle = props.toggle ? props.toggle : false;
     this.placeholderText = props.placeholderText;
     this.onSearch = debounce(this.onSearch.bind(this), 500);
   }
@@ -19,8 +20,10 @@ class SearchBox extends Component {
     this.setState({ originalWidth: this.width });
   }
 
-  onFocus = () => this.setState({ originalWidth: this.width * 2, toggle: true });
-  deFocus = () => this.setState({ originalWidth: this.width, toggle: false });
+  onFocus = () => {
+    this.setState({ originalWidth: this.width * 2 })
+    this.context.show(true);
+  };
 
   // Handling change on input element
   handleChange = (e) => {
@@ -28,37 +31,44 @@ class SearchBox extends Component {
   }
 
   // Method for send petition onSearch
-  onSearch = (value) => {
-    if (value.length > 0) {
-      this.setState({ toggle: true });
-      // TODO: Make petition for search Jobs based on input text value
+  onSearch = (query = '') => {
+    if (query.length > 0) {
+      this.context.findJobs(query);
     }
   };
+
+  clickOption = (e, option) => {
+    // TODO: Add logic for API call to get Job information
+  };
+
+  searchList = () => (
+    this.context.state.findedJobs.map((job) =>
+      <li key={job.uuid} onClick={(e) => this.clickOption(e, job.uuid)} className="search__item">
+        {job.suggestion}
+      </li>)
+  );
 
   render () {
     return (<div className="search-box">
       <div className="search__wrapper bg-white flex">
         <input
-          style={{width: this.state.originalWidth + 'px'}}
+          style={{width: (this.context.state.show) ? this.state.originalWidth + 'px' : this.width + 'px' }}
           className="search__input rounded p-2"
           type="text"
           placeholder={this.placeholderText}
           onFocus={this.onFocus}
-          onChange={this.handleChange}
-          onBlur={this.deFocus} />
+          onChange={this.handleChange} />
         <div className="w-auto flex justify-end items-center p-2">
           <i className="fas fa-search"></i>
         </div>
       </div>
-      { (this.state.toggle) ? <div className="search__dropdown">
+      <div className="search__dropdown" style={{ display: (this.context.state.show) ? 'block' : 'none' }}>
         <nav className="search__nav">
           <ul className="search__list list-reset">
-            <li className="search__item">Job Name</li>
-            <li className="search__item">Job Name</li>
-            <li className="search__item">Job Name</li>
+            {this.searchList()}
           </ul>
         </nav>
-      </div> : null }
+      </div>
     </div>);
   }
 }
